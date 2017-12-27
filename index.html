@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="j.css">
+
+    <script src="dist/sweetalert2.min.js"></script>
+<link rel="stylesheet" type="text/css" href="dist/sweetalert2.css">
+
+    <title>Java Script</title>
+
+</head>
+<body>
+
+    <div class="t1">
+            <h1>เทคนิคที่ 1</h1>
+            <h2>แสดงข้อความ Alert</h2>
+            <button onclick="w1()">Click</button>
+            <script>
+            function w1(){
+                swal({
+                title:"สวัสดีครับผมชื่อ Java Script",
+                text:"คุณต้องการรู้จักผมหรือไม่ ?",
+                type:"success",
+                showCancelButton:true,
+                cancelButtonColor:"#DD6B55",
+                confirmButtonColor:"#DD6B55",
+                confirmButtonText:"Yes",
+                cancelButtonText:"No",
+                closeOnConfirm:false,
+                closeOnCancel:false,
+            },
+            function(isConfirm){
+                if(isConfirm){
+                swal("Complete","Close Complete","success")
+                }else{
+                swal("Cancel","Eror Message","warning")
+                }
+            });
+            }
+            </script>
+
+    </div>
+    <div class="t2">
+            <h1>เทคนิคที่ 2</h1>
+            <h2>ใส่สี Background Alert</h2>
+            <button onclick="w2()">Click</button>
+                <script>
+                function w2(){
+                     swal({
+                    title: 'background color',
+                    width: 600,
+                     padding: 100,
+                     background: '#DD6B55'
+                    })
+                }
+                </script>
+    </div>
+    <div class="t3">
+            <h1>เทคนิคที่ 3</h1>
+            <h2>ใส่รูปภาพ</h2>
+            <button onclick="w3()">Click</button>
+            <script>
+            function w3(){
+                swal({
+                title: 'Dog',
+                text: '',
+                imageUrl: 'https://i.ytimg.com/vi/wJf0mkLxrUY/maxresdefault.jpg',
+                imageWidth: 400,
+                imageHeight: 200,
+                imageAlt: 'Custom image',
+                animation: false
+                });
+            }
+            </script>
+            </div>
+            <div class="t4">
+                    <h1>เทคนิคที่ 4</h1>
+                    <h2>เเสดงข้อความ Alert ให้กรอก Email</h2>
+                    <button onclick="w4()">Click</button>
+                    <script>
+                    function w4(){
+                        swal({
+                        title: 'กรุณาใส่ Email ด้วยค่ะ',
+                        input: 'email',
+                        showCancelButton: true,
+                        confirmButtonText: 'Submit',
+                        showLoaderOnConfirm: true,
+                        preConfirm: (email) => {
+                            return new Promise((resolve) => {
+                            setTimeout(() => {
+                                if (email === 'taken@example.com') {
+                                swal.showValidationError(
+                                    'This email is already taken.'
+                                )
+                                }
+                                resolve()
+                            }, 2000)
+                            })
+                        },
+                        allowOutsideClick: false
+                        }).then((result) => {
+                        if (result.value) {
+                            swal({
+                            type: 'success',
+                            title: 'Email ของคุณคือ ',
+                            html: ' ' + result.value
+                            })
+                        }
+                        })
+            }
+            </script>
+    </div>
+    <div class="t5" id="w5">
+            <h1>เทคนิคที่ 5</h1>
+            <h2>แสดง Alert คำถามให้ตอบว่า Yes or No</h2>
+            <button onclick="w5()">Click</button>
+            <script>
+            function w5(){
+                swal({
+                
+                title: 'คุณอายุ 90 ใช่ไหม',
+                text: "",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes',
+                cancelButtonText:'No',
+                }).then((result) => {
+                if (result.value) {
+                    swal(
+                    'คุณเเก่',
+                    'ไม่น่าเชื่อว่าอายุคูณจะ 90 จริงๆ',
+                    'success'
+                    )
+                }
+                })
+            }
+            </script>
+    </div>
+    <div class="t6" id="w6">
+            <h1>เทคนิคที่ 6</h1>
+            <h2>ข้อความ Alert จะหายไปใน 5 วินาที</h2>
+            <button onclick="w6()">Click</button>
+            <script>
+            function w6(){
+                 swal({
+                title: 'Auto close alert!',
+                text: 'จะปิดใน 5 วินาที',
+                timer: 5000,
+                onOpen: () => {
+                    swal.showLoading()
+                }
+                }).then((result) => {
+                if (result.dismiss === 'timer') {
+                    console.log('I was closed by the timer')
+                }
+                })
+            }
+            </script>
+    </div>
+    <div class="t7" id="w7">
+            <h1>เทคนิคที่ 7</h1>
+            <h2>ให้กรอก ชื่อสกุล เบอร์โทร</h2>
+            <button onclick="w7()">Click</button>
+            <script>
+            function w7(){
+                swal.setDefaults({
+                    input: 'text',
+                    confirmButtonText: 'Next &rarr;',
+                    showCancelButton: true,
+                    progressSteps: ['1', '2', '3']
+                  })
+                  
+                  var steps = [
+                    {
+                      title: 'กรุณาใส่ชื่อของคุณ',
+                      text: 'ผมชื่อ Java Script'
+                    },
+                    'กรุณาใสนามสกุลขอองคุณ',
+                    'กรุณาใส่เบอร์โทรของคุณ',                  
+                  ]
+                  
+                  swal.queue(steps).then((result) => {
+                    swal.resetDefaults()
+                  
+                    if (result.value) {
+                      swal({
+                        title: 'เสร็จแล้ว',
+                        html:
+                          'ชื่อ นามสกุล เบอร์โทร ของคุณคือ : <pre>' +
+                            JSON.stringify(result.value) +
+                          '</pre>',
+                        confirmButtonText: 'ตกลง'
+                      })
+                    }
+                  })              
+            }
+            </script>
+    </div>
+    <div class="t8" id="w8">
+            <h1>เทคนิคที่ 8</h1>
+            <h2>ให้สีในรูปสี่เหลี่ยมเลื่อน</h2>
+            <p>
+<button onclick="myMove()">Click</button>
+</p> 
+
+<div id ="container">
+<div id ="animate"></div>
+</div>
+
+<script>
+function myMove() {
+  var elem = document.getElementById("animate");   
+  var pos = 0;
+  var id = setInterval(frame, 5);
+  function frame() {
+    if (pos == 350) {
+      clearInterval(id);
+    } else {
+      pos++; 
+      elem.style.top = pos + 'px'; 
+      elem.style.left = pos + 'px'; 
+    }
+  }
+}
+</script>
+             </script>
+    </div>
+    <div class="t9" id="w9()">
+            <h1>เทคนิคที่ 9</h1>
+            <h2>Show Time</h2>
+            <button onclick="displayDate()">เวลาตอนนี้คือ </button>
+
+            <script>
+            function displayDate() {
+                document.getElementById("demo").innerHTML = Date();
+            }
+            </script>
+
+            <p id="demo"></p>
+    </div>
+    <div class="t10" id="w10()">
+            <h1>เทคนิคที่ 10</h1>
+            <h2>ตัวหนังสือเปปลี่ยนสี</h2>
+            <p><b>ผมชื่อ นาย ธนพงษ์ เเก้วศิลา<b></p>
+
+            <p>รหัสนักศึกษา 581102108</p>
+            <button onclick="myFunction()">Click</button>
+
+<script>
+function myFunction() {
+    var myCollection = document.getElementsByTagName("p");
+    var i;
+    for (i = 0; i < myCollection.length; i++) {
+        myCollection[i].style.color = "blue";
+    }
+}
+</script>
+    </div>
+</body>
+
+</html>
